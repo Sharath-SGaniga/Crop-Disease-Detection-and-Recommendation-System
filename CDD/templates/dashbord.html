@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Disease Detection</title>
+
+        <!-- CSS FILES -->        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap" rel="stylesheet">
+                        
+        <link href="/media/css/bootstrap.min.css" rel="stylesheet">
+
+        <link href="/media/css/bootstrap-icons.css" rel="stylesheet">
+
+        <link href="/media/css/templatemo-topic-listing.css" rel="stylesheet">
+
+        <link href="/media/css/style.css" rel="stylesheet">
+
+        <script src="/media/js/script.js"></script>
+
+    </head>
+    
+    <body id="top">
+
+        <main>
+
+            <nav class="navbar navbar-expand-lg">
+                <div class="container">
+                    <a class="navbar-brand" href="{% url 'accounts:home' %}">
+                        <i class="bi-back"></i>
+                        <span>CDD</span>
+                    </a>
+
+                    <div class="d-lg-none ms-auto me-4">
+                        <a href="#top" class="navbar-icon bi-person smoothscroll"></a>
+                    </div>
+    
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+    
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-lg-5 me-lg-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'accounts:home' %}">Home</a>
+                            </li>
+
+                            
+                        </ul>
+
+                        <div class="col-lg-3 col-md-4 col-12 mt-4 mt-lg-0 ms-auto"  style="padding-left: 20%;">
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle bi-person" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                </button>
+    
+                                <ul class="dropdown-menu">
+                                    {% csrf_token %}
+                                                                       <li>
+  {% if not user.is_authenticated %}
+    <a href="{% url 'accounts:login' %}"><button class="dropdown-item" type="button">Login</button></a>
+  {% else %}
+    <button class="dropdown-item disabled" type="button" disabled>Login</button>
+  {% endif %}
+</li>
+
+                                    <li>
+  {% if not user.is_authenticated %}
+    <a href="{% url 'accounts:register' %}"><button class="dropdown-item" type="button">Register</button></a>
+  {% else %}
+    <button class="dropdown-item disabled" type="button" disabled>Register</button>
+  {% endif %}
+</li>
+                                    <li>
+    {% if  user.is_authenticated %}
+    <a href="{% url 'accounts:logout' %}"><button class="dropdown-item" type="button">Logout</button></a>
+    {% else %}
+    <button class="dropdown-item" type="button" disabled >Logout</button></a>
+    {% endif %}
+</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            
+            
+            <section class="hero-section d-flex justify-content-center align-items-center min-vh-100" id="section_1" style=" padding-bottom: 0%; padding-top: 40px; width: 100%;">
+                <div class="container ">
+                    <div class="row mt-5 justify-content-center">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3>User</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label for="username">Username:</label>
+                                        <p id="username">{{ user.first_name }}</p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Email:</label>
+                                        <p id="email">{{ user.email }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-3 justify-content-center" style="width: 980px;padding-left:340px;">
+                    <section class="bg-light py-4 card justify-content-center align-items-center" style=" padding-top: 5%; width:100%; ">
+                        <div class="container justify-content-center align-items-center">
+                            <table class="table mt-3 justify-content-center">
+                              <thead>
+                                <tr>
+                                  <th scope="col">Crop Image</th>
+                                  <th scope="col">Disease</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                              {% for disease in diseases %}
+
+                                <tr>
+                                  <td><a href="{% url 'accounts:pest_rec' disease.id %}"><img src="{{ disease.image.image.url }}" alt="{{ disease.image.image.name }}" style="width: 100px; height: 100px;"></a></td>
+                                  <td><a href="{% url 'accounts:pest_rec' disease.id %}">{{ disease.disease }}</a></td>
+                                </tr>
+
+                              {% endfor %}
+                                <!-- Add more rows as needed -->
+                              </tbody>
+                            </table>
+                          </div>
+                      </section>
+                    </div>
+                </div>
+                
+            </section>
+
+            
+            
+        </main>
+
+
+
+        <!-- JAVASCRIPT FILES -->
+        <script src="/media/js/jquery.min.js"></script>
+        <script src="/media/js/bootstrap.bundle.min.js"></script>
+        <script src="/media/js/jquery.sticky.js"></script>
+        <script src="/media/js/click-scroll.js"></script>
+        <script src="/media/js/custom.js"></script>
+
+    </body>
+</html>

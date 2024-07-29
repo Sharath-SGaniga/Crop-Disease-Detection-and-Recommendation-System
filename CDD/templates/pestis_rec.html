@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Topic Listing Bootstrap 5 Template</title>
+
+        <!-- CSS FILES -->        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap" rel="stylesheet">
+                        
+        <link href="/media/css/bootstrap.min.css" rel="stylesheet">
+
+        <link href="/media/css/bootstrap-icons.css" rel="stylesheet">
+
+        <link href="/media/css/templatemo-topic-listing.css" rel="stylesheet">
+
+        <link href="/media/css/style.css" rel="stylesheet">
+
+        <script src="/media/js/script.js"></script>
+
+    </head>
+    
+    <body id="top">
+
+        <main>
+
+            <nav class="navbar navbar-expand-lg">
+                <div class="container">
+                    <a class="navbar-brand" href="{% url 'accounts:home' %}">
+                        <i class="bi-back"></i>
+                        <span>CDD</span>
+                    </a>
+
+                    <div class="d-lg-none ms-auto me-4">
+                        <a href="#top" class="navbar-icon bi-person smoothscroll"></a>
+                    </div>
+    
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+    
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-lg-5 me-lg-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'accounts:home' %}">Home</a>
+                            </li>
+                            
+                    
+                            
+                        </ul>
+                        
+
+                        <div class="col-lg-3 col-md-4 col-12 mt-4 mt-lg-0 ms-auto" style="padding-left: 20%;">
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle bi-person" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                </button>
+    
+                                <ul class="dropdown-menu">
+    
+                                    <li><a href="login.html"><button class="dropdown-item" type="button">Login</button></a></li>
+    
+                                    <li><a href="regis.html"><button class="dropdown-item" type="button">Register</button></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+           </main> 
+            
+            <section class="hero-section d-flex justify-content-center align-items-center min-vh-100 " style="padding-top: 2%;" id="section_1">
+              <div class="container-fluid " >
+                <div class="row justify-content-center " >
+                    <div class="container mt-5">
+                        <div class="row justify-content-center ">
+                          <div class="col-md-6 "style="height: 50%;">
+                            <div class="card  shadow-lg my-div animate fadein" >
+                                <div class="card  shadow-lg my-div align-items-center"  style="padding-top:50px">
+                                    <img src="{{ disease.image.image.url }}" class=" img-fluid " style="width: 250px; height:250px;"alt="">
+
+                              <div class="card-body">
+                                <div class="jumbotron">
+                                    <p >{{ disease.disease }}</p>
+                                    <p>{{ recommendation }}</p>
+                                </div>
+                                  </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+        
+ 
+        <footer >
+            
+        </footer>
+        
+
+
+        <!-- JAVASCRIPT FILES -->
+        <script src="/media/js/jquery.min.js"></script>
+        <script src="/media/js/bootstrap.bundle.min.js"></script>
+        <script src="/media/js/jquery.sticky.js"></script>
+        <script src="/media/js/click-scroll.js"></script>
+        <script src="/media/js/custom.js"></script>
+
+    </body>
+</html>

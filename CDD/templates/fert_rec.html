@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Crop Recommendation</title>
+
+        <script>
+        function showHeading() {
+        var heading = document.getElementById("myHeading");
+        heading.style.display = "block";
+        }
+        </script>
+
+        <!-- CSS FILES -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap" rel="stylesheet">
+
+        <link href="/media/css/bootstrap.min.css" rel="stylesheet">
+
+        <link href="/media/css/bootstrap-icons.css" rel="stylesheet">
+
+        <link href="/media/css/templatemo-topic-listing.css" rel="stylesheet">
+
+        <link href="/media/css/style.css" rel="stylesheet">
+
+        <script src="/media/js/script.js"></script>
+
+
+<!--
+
+TemplateMo 590 topic listing
+
+https://templatemo.com/tm-590-topic-listing
+
+-->
+    </head>
+
+    <body id="top">
+
+        <main>
+
+            <nav class="navbar navbar-expand-lg">
+                <div class="container">
+                    <a class="navbar-brand" href="{% url 'accounts:home' %}">
+                        <i class="bi-back"></i>
+                        <span>CDD</span>
+                    </a>
+
+                    <div class="d-lg-none ms-auto me-4">
+                        <a href="#top" class="navbar-icon bi-person smoothscroll"></a>
+                    </div>
+
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-lg-5 me-lg-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'accounts:home' %}">Home</a>
+
+                            </li>
+
+                            <li class="nav-item dropdown">
+
+                                <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
+                                    <li><a class="dropdown-item" href="topics-listing.html">Topics Listing</a></li>
+
+                                    <li><a class="dropdown-item" href="contact.html">Contact Form</a></li>
+                                </ul>
+                            </li>
+
+                        </ul>
+
+
+                        <div class="col-lg-3 col-md-4 col-12 mt-4 mt-lg-0 ms-auto" style="padding-left: 20%;">
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle bi-person" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                </button>
+
+                                <ul class="dropdown-menu">
+                                    {% csrf_token %}
+                                                                       <li>
+  {% if not user.is_authenticated %}
+    <a href="{% url 'accounts:login' %}"><button class="dropdown-item" type="button">Login</button></a>
+  {% else %}
+    <button class="dropdown-item disabled" type="button" disabled>Login</button>
+  {% endif %}
+</li>
+
+                                    <li>
+  {% if not user.is_authenticated %}
+    <a href="{% url 'accounts:register' %}"><button class="dropdown-item" type="button">Register</button></a>
+  {% else %}
+    <button class="dropdown-item disabled" type="button" disabled>Register</button>
+  {% endif %}
+</li>
+<li>
+    {% if  user.is_authenticated %}
+    <a href="{% url 'accounts:logout' %}"><button class="dropdown-item" type="button">Logout</button></a>
+    {% else %}
+    <button class="dropdown-item" type="button" disabled >Logout</button></a>
+    {% endif %}
+</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+
+            <section class="hero-section d-flex justify-content-center align-items-center min-vh-100 " style="padding-top: 2%;" id="section_1">
+              <div class="container-fluid" >
+                <div class="row justify-content-center " >
+                    <div class="container mt-5">
+                        <div class="row justify-content-center ">
+                          <div class="col-md-6 "style="height: 50%;">
+                            <div class="card  shadow-lg my-div animate fadein" >
+                                <h2 style="align-items: center; text-align: center;">Get the Fertilizer Recommendation</h2>
+                              <div class="card-body">
+                                <form method="post">
+                                    {% csrf_token %}
+                                    {% include "base/alert.html" %}
+                                    <div class="row mb-3">
+                                      <label for="nitrogen" class="col-sm-3 col-form-label">Nitrogen</label>
+                                      <div class="col-sm-9">
+                                        <input type="number" class="form-control" id="nitrogen" placeholder="Enter Nitrogen" name="nitrogen" step="any" required>
+                                      </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                      <label for="phosphorus" class="col-sm-3 col-form-label">Phosphorus</label>
+                                      <div class="col-sm-9">
+                                        <input type="number" class="form-control" id="phosphorus" placeholder="Enter Phosphorus" name="phosphorus" step="any" required>
+                                      </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                      <label for="potassium" class="col-sm-3 col-form-label">Potassium </label>
+                                      <div class="col-sm-9">
+                                        <input type="number" class="form-control" id="potassium" placeholder="Enter Potassium" name="potassium" step="any" required>
+                                      </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                      <label for="crops" class="col-sm-3 col-form-label">Crop to grow</label>
+
+                                        <div class="col-sm-9" style="height: 50px; overflow-y: auto;"  >
+                                          <select size="1" style="width:100%; height:38px"  onblur="this.size=1" name="crop" required >
+                                              <option value="" disabled selected>Choose a crop</option>
+                                            <option value="apple">Apple</option>
+                                            <option value="banana">Banana</option>
+                                            <option value="blackgram">Black gram</option>
+                                            <option value="chickpea">Chickpea</option>
+                                            <option value="coconut">Coconut</option>
+                                            <option value="coffee">Coffee</option>
+                                            <option value="cotton">Cotton</option>
+                                            <option value="grapes">Grapes</option>
+                                            <option value="jute">Jute</option>
+                                            <option value="kidneybeans">Kidney beans</option>
+                                            <option value="lentil">Lentil</option>
+                                            <option value="maize">Maize</option>
+                                            <option value="mango">Mango</option>
+                                            <option value="mothbeans">Moth beans</option>
+                                            <option value="mungbean">Mung bean</option>
+                                            <option value="muskmelon">Muskmelon</option>
+                                            <option value="orange">Orange</option>
+                                            <option value="papaya">Papaya</option>
+                                            <option value="pigeon peas">Pigeon peas</option>
+                                            <option value="pomegranate">Pomegranate</option>
+                                            <option value="rice">Rice</option>
+                                            <option value="watermelon">Watermelon</option>
+                                          </select>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary " onclick="showHeading()">Submit</button>
+                                  </form>
+
+                                  <div style="padding-top: 50px;">
+                                          {{ recommendation }}
+                                    </div>
+<!--                                  <h3 id="myHeading" style="display: none;"></h3>-->
+
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+
+            </section>
+        </main>
+
+        <footer >
+
+        </footer>
+
+
+
+        <!-- JAVASCRIPT FILES -->
+        <script src="/media/js/jquery.min.js"></script>
+        <script src="/media/js/bootstrap.bundle.min.js"></script>
+        <script src="/media/js/jquery.sticky.js"></script>
+        <script src="/media/js/click-scroll.js"></script>
+        <script src="/media/js/custom.js"></script>
+
+    </body>
+</html>

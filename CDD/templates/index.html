@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Crop Disease Detection and Recommendation System</title>
+                        
+        <link href="/media/css/bootstrap.min.css" rel="stylesheet">
+
+        <link href="/media/css/bootstrap-icons.css" rel="stylesheet">
+
+        <link href="/media/css/templatemo-topic-listing.css" rel="stylesheet">
+
+        <link href="/media/css/style.css" rel="stylesheet">
+
+        <script src="/media/js/script.js"></script>
+
+    </head>
+    
+    <body id="top">
+
+        <main>
+
+            <nav class="navbar navbar-expand-lg">
+                <div class="container">
+                    <a class="navbar-brand" href="{% url 'accounts:home' %}">
+                        <i class="bi-back"></i>
+                        <span>CDD</span>
+                    </a>
+
+                    <div class="d-lg-none ms-auto me-4">
+                        <a href="#top" class="navbar-icon bi-person smoothscroll"></a>
+                    </div>
+    
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+    
+                    <div class="collapse navbar-collapse" id="navbarNav" >
+                        <ul class="navbar-nav ms-lg-5 me-lg-auto">
+                            <li class="nav-item">
+                                <a class="nav-link click-scroll" href="#section_1">Home</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link click-scroll" href="#section_2">Services</a>
+                            </li>
+    
+                            <li class="nav-item">
+                                <a class="nav-link click-scroll" href="#section_3">How it works</a>
+                            </li>
+
+                            <!--
+                            <li class="nav-item">
+                                <a class="nav-link click-scroll" href="#section_4">FAQs</a>
+                            </li>
+                            -->
+                            <li class="nav-item">
+                                <a class="nav-link click-scroll" href="#section_5">Contact</a>
+                            </li>
+                        </ul>
+                        <div class="col-lg-3 col-md-4 col-12 mt-4 mt-lg-0 ms-auto"  style="padding-left: 20%;">
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle bi-person" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                </button>
+    
+                                <ul class="dropdown-menu">
+                                    {% csrf_token %}
+                                                                       <li>
+  {% if not user.is_authenticated %}
+    <a href="{% url 'accounts:login' %}"><button class="dropdown-item" type="button">Login</button></a>
+  {% else %}
+    <button class="dropdown-item disabled" type="button" disabled>Login</button>
+  {% endif %}
+</li>
+
+                                    <li>
+  {% if not user.is_authenticated %}
+    <a href="{% url 'accounts:register' %}"><button class="dropdown-item" type="button">Register</button></a>
+  {% else %}
+    <button class="dropdown-item disabled" type="button" disabled>Register</button>
+  {% endif %}
+</li>
+<li>
+    {% if  user.is_authenticated %}
+    <a href="{% url 'accounts:logout' %}"><button class="dropdown-item" type="button">Logout</button></a>
+    {% else %}
+    <button class="dropdown-item" type="button" disabled >Logout</button></a>
+    {% endif %}
+</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            
+
+            <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
+                <div class="container">
+                    <div class="row">
+
+                        <div class=" mx-auto">
+                            <h1 class="animated-heading text-white text-center">Crop Disease Detection and</h1>
+                            <h1 class="text-white text-center animated-headingrr ">Recommendation System</h1>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+        
+            <section class="featured-section">
+                <div class="container">
+                    
+                </div>
+            </section>
+
+
+            <section class="explore-section section-padding" id="section_2">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-12 text-center">
+                            <h2 class="mb-4 " style=" padding-bottom: 5%;">Our Services</h2>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-12 text-center" >
+              {% if not user.is_authenticated %}
+            {% endif %}
+            </div>
+
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-13">
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active" id="design-tab-pane" role="tabpanel" aria-labelledby="design-tab" tabindex="0">
+                                    <div class="row">
+                                        <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0 ">
+                                            <div class="custom-block bg-white shadow-lg">
+                                                {% if user.is_authenticated %}
+                                                <a href="{% url 'accounts:upload_image' %}">
+                                                    <div class="d-flex">
+                                                    <div>
+                                                        <h5 class="mb-2">Disease detection</h5>
+
+                                                        <p class="mb-0"></p>
+                                                    </div>
+                                                </div>
+                                                <img src="/media/images/dises.jpg" class="custom-block-image img-fluid" alt="">
+                                            </a>
+                                                {% else %}
+                                                <a href="{% url 'accounts:register' %}">
+                                                    <div class="d-flex">
+                                                        <div>
+                                                            <h5 class="mb-2">Disease detection</h5>
+
+                                                            <p class="mb-0"></p>
+                                                        </div>
+                                                    </div>
+                                                    <img src="/media/images/dises.jpg" class="custom-block-image img-fluid" alt="">
+                                                    </a>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0 ">
+                                            <div class="custom-block bg-white shadow-lg">
+                                                {% if user.is_authenticated %}
+                                                <a href="{% url 'accounts:crop_rec' %}">
+                                                    <div class="d-flex">
+                                                        <div>
+                                                            <h5 class="mb-2">Crop Recommendation</h5>
+
+                                                                
+                                                        </div>
+                                                    </div>
+
+                                                    <img src="/media/images/crop_rec.jpg" class="custom-block-image img-fluid" alt="">
+                                                </a>
+                                                {% else %}
+
+                                                <a href="{% url 'accounts:register' %}">
+                                                    <div class="d-flex">
+                                                        <div>
+                                                            <h5 class="mb-2">Crop Recommendation</h5>
+
+                                                                
+                                                        </div>
+                                                    </div>
+
+                                                    <img src="/media/images/crop_rec.jpg" class="custom-block-image img-fluid" alt="">
+                                                    </a>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0 ">
+                                            <div class="custom-block bg-white shadow-lg">
+                                                {% if user.is_authenticated %}
+                                                <a href="{% url 'accounts:fert_rec' %}">
+                                                    <div class="d-flex">
+                                                        <div>
+                                                            <h5 class="mb-2">Fertilizer Recommendation</h5>
+
+                                                                
+                                                        </div>
+                                                    </div>
+
+                                                    <img src="/media/images/fer.jpg" class="custom-block-image img-fluid" alt="">
+                                                </a>
+                                                {% else %}
+
+                                                <a href="{% url 'accounts:register' %}">
+                                                    <div class="d-flex">
+                                                        <div>
+                                                            <h5 class="mb-2">Fertilizer Recommendation</h5>
+
+                                                               
+                                                        </div>
+                                                    </div>
+
+                                                    <img src="/media/images/fer.jpg" class="custom-block-image img-fluid" alt="">
+                                                    </a>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+
+                    </div>
+                </div>
+
+            </section>
+
+
+            <section class="timeline-section section-padding" id="section_3">
+                <div class="section-overlay"></div>
+
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-12 text-center">
+                            <h2 class="text-white mb-4">How does it work?</h1>
+                        </div>
+
+                        <div class="col-lg-10 col-12 mx-auto">
+                            <div class="timeline-container">
+                                <ul class="vertical-scrollable-timeline" id="vertical-scrollable-timeline">
+                                    <div class="list-progress">
+                                        <div class="inner"></div>
+                                    </div>
+
+                                    <li>
+                                        <h4 class="text-white mb-3">Disease Detection</h4>
+
+                                        <p class="text-white">Upload the image of the crop leaf and get the status of the Crop (Diseased / Healthy) with causes and prevention </p>
+
+                                        <div class="icon-holder">
+                                          <i class="bi bi-1-circle bi-5x"></i>
+                                        </div>
+                                    </li>
+                                    
+                                    <li>
+                                        <h4 class="text-white mb-3">Crop Recommendation</h4>
+
+                                        <p class="text-white">Enter the soil and climate details and get the Crop Recommendation based on the soil and the climate conditions </p>
+
+                                        <div class="icon-holder">
+                                          <i class="bi bi-2-circle"></i>
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <h4 class="text-white mb-3">Fertilizer Recommendation</h4>
+
+                                        <p class="text-white">Enter the soil details with the crop to be grown and get the Fertilizer Recommendation for your soil</p>
+
+                                        <div class="icon-holder">
+                                          <i class="bi bi-3-circle"></i>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!--<section class="faq-section section-padding" id="section_4">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-6 col-12">
+                            <h2 class="mb-4">Frequently Asked Questions</h2>
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <div class="col-lg-5 col-12">
+                            <img src="/media/images/faq_graphic.jpg" class="img-fluid" alt="FAQs">
+                        </div>
+
+                        <div class="col-lg-6 col-12 m-auto">
+                            <div class="accordion" id="accordionExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingOne">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        What is Topic Listing?
+                                        </button>
+                                    </h2>
+
+                                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            Topic Listing is free Bootstrap 5 CSS template. <strong>You are not allowed to redistribute this template</strong> on any other template collection website without our permission. Please contact TemplateMo for more detail. Thank you.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingTwo">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        How to find a topic?
+                                    </button>
+                                    </h2>
+
+                                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            You can search on Google with <strong>keywords</strong> such as templatemo portfolio, templatemo one-page layouts, photography, digital marketing, etc.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingThree">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        Does it need to paid?
+                                    </button>
+                                    </h2>
+
+                                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        -->
+
+           </main>
+
+<footer class="site-footer" id="section_5">
+    <section class="section-padding section-bg">
+        <div class="container">
+            <div class="row">
+                <div style="color: black; font-size: 60px; text-align: center;">Contact Us</div>
+
+                <div class="col-lg-12 col-12">
+                    <h3 class="mb-4 pb-2">We'd love to hear from you</h3>
+                </div>
+
+                <div class="col-lg-6 col-12">
+                    <form action="#" method="post" class="custom-form contact-form" role="form">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-12">
+                                <div class="form-floating">
+                                    <input type="text" name="name" id="name" class="form-control" placeholder="Name" required="">
+
+                                    <label for="floatingInput">Name</label>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-12">
+                                <div class="form-floating">
+                                    <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Email address" required="">
+
+                                    <label for="floatingInput">Email address</label>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 col-12">
+                                <div class="form-floating">
+                                    <input type="text" name="subject" id="name" class="form-control" placeholder="Name" required="">
+
+                                    <label for="floatingInput">Subject</label>
+                                </div>
+
+                                <div class="form-floating">
+                                    <textarea class="form-control" id="message" name="message" placeholder="Tell me about the project"></textarea>
+
+                                    <label for="floatingTextarea">Tell me about the project</label>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-12 ms-auto">
+                                <button type="submit" class="form-control">Submit</button>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+
+                <div class="col-lg-5 col-12 mx-auto mt-5 mt-lg-0">
+                    <img src="/media/images/conta.jpg" alt="" width="600px" height="300px">
+
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+        </footer>
+
+
+        <!-- JAVASCRIPT FILES -->
+        <script src="/media/js/jquery.min.js"></script>
+        <script src="/media/js/bootstrap.bundle.min.js"></script>
+        <script src="/media/js/jquery.sticky.js"></script>
+        <script src="/media/js/click-scroll.js"></script>
+        <script src="/media/js/custom.js"></script>
+
+    </body>
+</html>
