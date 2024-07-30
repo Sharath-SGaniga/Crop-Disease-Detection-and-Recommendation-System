@@ -16,7 +16,7 @@ The **Crop Disease Detection and Recommendation System** is an innovative projec
 - **Backend:** Django (Python)
 - **Machine Learning:** Python, TensorFlow, scikit-learn
 - **Database:** SQLite (or any preferred database supported by Django)
-- **Tools and Libraries:** OpenCV for image processing, Pandas and NumPy for data manipulation, Matplotlib for data visualization
+- **Tools and Libraries:** CNN for image processing, Pandas and NumPy for data manipulation, Matplotlib for data visualization
 
 ## Installation
 
